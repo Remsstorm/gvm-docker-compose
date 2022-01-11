@@ -1,0 +1,18 @@
+---
+####script to launch docker-compose gvm  
+- name: playbook
+  hosts: 172.0.10.45
+  become: yes
+  become_user: root
+  tasks:
+
+
+    - name: launch docker-compose gvm
+      shell: docker-compose up -d
+    - name: docker-compose-logs
+      shell: docker-compose logs
+      register: output
+    - debug:
+        var: output.stdout_lines
+        verbosity: 2
+
